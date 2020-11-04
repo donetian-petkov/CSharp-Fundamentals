@@ -1,0 +1,63 @@
+using System;
+using System.Text;
+
+class MainClass {
+  
+  static int ReverseInteger(int number)
+  {
+    string numberToText = number.ToString();
+
+    StringBuilder stringBuild = new StringBuilder(numberToText);
+
+    for (int i = 0; i < numberToText.Length/2+1; i++)
+    {
+      if ((numberToText.Length % 2 == 0) && (i == numberToText.Length/2 || i == (numberToText.Length/2+1)))
+      {
+        continue;
+      }
+      
+      char currentChar = stringBuild[i];
+      stringBuild[i] = stringBuild[numberToText.Length-i-1];
+      stringBuild[numberToText.Length-i-1] = currentChar;
+
+    }
+    numberToText = stringBuild.ToString();
+    number = int.Parse(numberToText);
+    return number;
+ }
+
+ static void FindPalindrome()
+ {
+   while (true)
+   {
+     string input = Console.ReadLine();
+
+     if (input.Equals("END"))
+     {
+       break;
+     }
+
+     int numberOne = int.Parse(input);
+     int numberTwo = ReverseInteger(numberOne);
+     
+     if (numberOne==numberTwo) 
+     {
+       Console.WriteLine("true");
+     }
+     else 
+     {
+       Console.WriteLine("false");
+     }
+
+   }
+ }
+
+
+
+  
+  public static void Main (string[] args) {
+
+    FindPalindrome();
+  
+  }
+}

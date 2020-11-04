@@ -1,0 +1,70 @@
+using System;
+
+class MainClass {
+
+  static bool isPasswordValid = true;
+
+  static void CheckPassLength(string password)
+  {
+   if (password.Length < 6 || password.Length > 10)
+    {
+      Console.WriteLine("Password must be between 6 and 10 characters");
+      isPasswordValid = false;
+    } 
+  }
+  static void CheckLettersDigits(string password)
+  {
+    for (int i = 0; i < password.Length ; i++)
+    {
+      int asciiCode = (int) password[i];
+
+      if ((asciiCode < 48) || (asciiCode > 57 && asciiCode < 65) || ( asciiCode > 90 && asciiCode < 97 ) ||  asciiCode > 122)
+      {
+        Console.WriteLine("Password must consist only of letters and digits");
+        isPasswordValid = false;
+        break;
+      }
+    }
+  }
+
+  static void CheckNumberDigits(string password)
+  {  
+    int numberDigits = 0;
+    for (int i = 0; i < password.Length ; i++)
+    {
+      int asciiCode = (int) password[i];
+      
+      if (asciiCode > 47 && asciiCode < 58)
+      {
+        numberDigits++;
+      }
+    }
+
+    if (numberDigits < 2)
+    {
+      Console.WriteLine("Password must have at least 2 digits");
+      isPasswordValid = false;
+    }
+  }
+
+  static void ValidatePass(string password)
+  {
+    CheckPassLength(password);
+    CheckLettersDigits(password);
+    CheckNumberDigits(password);
+
+    if (isPasswordValid == true)
+    {
+      Console.WriteLine("Password is valid");
+    }
+  
+  }
+
+  public static void Main (string[] args) {
+
+    string password = Console.ReadLine();
+    
+    ValidatePass(password);
+    
+  }
+}

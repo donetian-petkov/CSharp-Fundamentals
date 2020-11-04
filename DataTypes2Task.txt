@@ -1,0 +1,19 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+
+    int number = int.Parse(Console.ReadLine());
+    string tempNumber = number.ToString();
+    int sum = 0;
+
+    for (int i = 0 ; i < number.ToString().Length; i++)
+    {
+      int temp = int.Parse(tempNumber[i].ToString());
+      sum += temp;
+    }
+
+    Console.WriteLine(sum);
+
+  }
+}

@@ -1,0 +1,30 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    
+    int people = int.Parse(Console.ReadLine());
+    int capacity = int.Parse(Console.ReadLine());
+    
+    int trips = people/capacity;
+
+
+    if (people%capacity != 0 && people - capacity > 0)
+    {
+      int diff = people%capacity;
+      Console.WriteLine($"{trips} courses * {capacity} people\n + 1 course * {diff} people");
+    } 
+    else 
+    {
+      if (people - capacity <= 0)
+      {
+        Console.WriteLine("All the persons fit inside in the elevator.");
+        Console.WriteLine("Only one course is needed.");
+      }
+      else if (people%capacity == 0 && people/capacity > 0) 
+      {
+        Console.WriteLine($"{trips} courses * {capacity} people");
+      }
+    }
+  }
+}

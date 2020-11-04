@@ -1,0 +1,58 @@
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+
+class MainClass {
+  
+  
+  public static void Main (string[] args) {
+
+    string passengersInput = Console.ReadLine();
+
+    List<string> passengersList = passengersInput.Split(' ').ToList(); 
+
+    List<int> wagonList = new List<int>();
+
+    for (int i = 0; i < passengersList.Count ; i++)
+    {
+      wagonList.Add(int.Parse(passengersList[i]));
+    }
+     
+    int maxPassengers = int.Parse(Console.ReadLine());
+
+    string wagonInput = Console.ReadLine();
+
+    while (wagonInput != "end")
+    {
+      string[] inputArray = wagonInput.Split();
+
+      if (inputArray[0] == "Add")
+      {
+        wagonList.Add((int.Parse(inputArray[1])));
+      }
+      else
+      {
+        int passengersToAdd = int.Parse(inputArray[0]);
+        
+        for (int i = 0 ; i < wagonList.Count ; i++) 
+        {
+          if (wagonList[i] + passengersToAdd <= maxPassengers) {
+            wagonList[i] = wagonList[i] + passengersToAdd;
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
+      }
+
+      wagonInput = Console.ReadLine();
+
+    }
+    
+    Console.WriteLine(string.Join(" " , wagonList));
+  
+  }
+}

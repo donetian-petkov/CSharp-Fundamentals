@@ -1,0 +1,27 @@
+using System;
+
+class MainClass {
+
+  static int count = 0;
+
+  static void CountVowels(string line) 
+  {
+    for (int i = 0; i < line.Length; i++)
+    {
+        if (line[i]  == 'a' || line[i] == 'e' || line[i] == 'i' || line[i] == 'o' || line[i] == 'u')
+        {
+            count++;
+        }
+    }
+    Console.WriteLine(count);
+  }
+  
+
+  public static void Main (string[] args) {
+
+    string line = Console.ReadLine().ToLower();
+
+    CountVowels(line);
+    
+  }
+}

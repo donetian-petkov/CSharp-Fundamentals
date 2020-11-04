@@ -1,0 +1,21 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    
+    int numberLines = int.Parse(Console.ReadLine());
+    int sum = 0;
+    
+    while (numberLines > 0) 
+    {
+      char line = char.Parse(Console.ReadLine());
+      int AsciCode = (int) line;
+      sum+=AsciCode;
+      numberLines--;
+    }
+
+    Console.WriteLine($"The sum equals: {sum}");
+    
+
+  }
+}

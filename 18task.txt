@@ -1,0 +1,89 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+
+    double sum = 0;
+
+    while (true) 
+    {
+      string coinText = Console.ReadLine();
+
+      if (coinText.Equals("Start"))
+      {
+        break;
+      }
+
+      double coin = double.Parse(coinText);
+
+      if (coin == 0.1 || coin == 0.2 || coin == 0.5 || coin == 1 || coin == 2) 
+      {
+       sum += coin; 
+      } else 
+      {
+        Console.WriteLine($"Cannot accept {coin}");
+        continue;
+      }
+
+    }
+
+    while (true) 
+    {
+      string product = Console.ReadLine();
+      double price = 0;
+      double currentSum = sum;
+      bool isPurchased = true;
+
+      if (product.Equals("End"))
+      {
+        Console.WriteLine($"Change: {sum:f2}");
+        break;
+      }
+
+      product = product.ToLower();
+
+      switch (product)
+      {
+        case "nuts":
+          price = 2.0;
+          break;
+
+        case "water":
+          price = 0.7;
+          break;
+
+        case "crisps":
+          price = 1.5;
+          break;
+
+        case "soda":
+          price = 0.8;
+          break; 
+
+        case "coke":
+          price = 1.0;
+          break;
+
+        default:
+          Console.WriteLine("Invalid product");
+          isPurchased = false;
+          break;
+      }
+
+      currentSum -= price;
+      
+      if (currentSum < 0) 
+      {
+        Console.WriteLine("Sorry, not enough money");
+        continue;
+      } else if (isPurchased)
+      {
+        sum = currentSum;
+        Console.WriteLine($"Purchased {product}");
+      }
+
+    }
+    
+    
+  }
+}

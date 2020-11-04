@@ -1,0 +1,39 @@
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+
+class MainClass {
+  
+  
+  public static void Main (string[] args) {
+
+    List<int> intList = Console.ReadLine().Split(' ')
+                                          .Select(int.Parse)
+                                          .ToList();
+
+    string nextInput = Console.ReadLine();
+
+    while (nextInput != "end")
+    {
+      string[] inputArray = nextInput.Split();
+      string element = inputArray[1];
+
+      if (inputArray[0] == "Delete")
+      {
+        intList.RemoveAll(x=>x == int.Parse(element));
+      }
+      else if (inputArray[0] == "Insert")
+      {
+        string position = inputArray[2];
+        intList.Insert(int.Parse(position) , int.Parse(element));
+      }
+
+      nextInput = Console.ReadLine();
+
+    }
+    
+    Console.WriteLine(string.Join(" " , intList));
+  
+  }
+}

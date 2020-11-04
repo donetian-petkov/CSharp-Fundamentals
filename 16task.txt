@@ -1,0 +1,36 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int j = 0;
+    string username = Console.ReadLine();
+    string password = string.Empty;
+    string attempt = string.Empty;
+    
+    for (int i = username.Length - 1; i >=0 ; i--)
+    {
+      password += username[i];
+    }
+
+    while (true)
+    {
+    attempt = Console.ReadLine();
+
+    if (attempt.Equals(password))
+    {
+      Console.WriteLine($"User {username} logged in.");
+      break;
+    } 
+    j++;
+    if (j < 4) 
+    {
+      Console.WriteLine("Incorrect password. Try again.");
+    } else if (j == 4) 
+    {
+      Console.WriteLine($"User {username} blocked!");
+      break;
+    }
+    }
+    
+  }
+}

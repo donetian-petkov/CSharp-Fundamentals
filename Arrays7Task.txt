@@ -1,0 +1,39 @@
+using System;
+using System.Linq;
+
+class MainClass {
+  public static void Main (string[] args) {
+
+    int[] array = Console.ReadLine().Split(" ")
+                                    .Select(int.Parse)
+                                    .ToArray();
+
+    int numberEqualInt = 1;
+    int equalInt = 0;
+    int maxNumberEqualInt = 0;
+
+    for (int i = 0 ; i < array.Length-1 ; i++)
+    {
+      if (array[i] == array [i+1])
+      {
+        numberEqualInt++;
+      } else 
+      {
+        numberEqualInt=1;
+      }
+
+      if (numberEqualInt > maxNumberEqualInt)
+        {
+          maxNumberEqualInt = numberEqualInt;
+          equalInt = array[i];
+        }
+
+    }
+
+    for (int i = 0 ; i < maxNumberEqualInt ; i++)
+    {
+      Console.Write(equalInt + " ");
+    }
+
+  }
+}

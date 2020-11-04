@@ -1,0 +1,61 @@
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+
+class MainClass {
+  
+  
+  public static void Main (string[] args) {
+
+    int numberOfCommands = int.Parse(Console.ReadLine());
+
+    List<string> guestList = new List<string>();
+
+    int n = 0;
+
+    while (n < numberOfCommands) 
+    {
+      n++;
+
+      string commandInput = Console.ReadLine();
+      
+      List<string> inputList = commandInput.Split(' ').ToList();
+
+      string guestName = inputList[0];
+
+      if (inputList[2] == "going!")
+      {
+        if (guestList.Contains(guestName))
+        {
+          Console.Write($"{guestName} is already in the list!\n");
+          continue;
+        }
+        else 
+        {
+          guestList.Add(guestName); 
+          continue;
+        }
+      } 
+      else if (inputList[2] == "not")
+      {
+        if (!guestList.Contains(guestName))
+        {
+          Console.Write($"{guestName} is not in the list!\n");
+          continue;
+        }
+        else  
+        {
+          guestList.Remove(guestName);
+          continue;
+        }
+      }
+
+    }
+
+    Console.WriteLine(string.Join("\n" , guestList));
+
+  }    
+  
+  }
+

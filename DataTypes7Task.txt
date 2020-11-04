@@ -1,0 +1,29 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+
+    int n = int.Parse(Console.ReadLine());
+    int total = 255;
+
+    while (n > 0) 
+    {
+      int litters = int.Parse(Console.ReadLine());
+
+      if (litters > total)
+      {
+        Console.WriteLine("Insufficient capacity!");
+        n--;
+        continue;
+      } 
+      else 
+      {
+        total-=litters;
+      }
+      n--;
+    }
+    
+    Console.WriteLine(255-total);
+     
+  }
+}

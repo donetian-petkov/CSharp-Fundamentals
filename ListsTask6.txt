@@ -1,0 +1,69 @@
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+
+class MainClass {
+
+  public static void Main (string[] args) {
+
+    bool isFirstPlayerWinner = true;
+    int sum = 0;
+
+    List<int> firstPlayer = Console.ReadLine().Split(' ')
+                                          .Select(int.Parse)
+                                          .ToList();
+
+    List<int> secondPlayer = Console.ReadLine().Split(' ')
+                                             .Select(int.Parse)
+                                             .ToList();
+
+    
+    while (true)
+    {
+      if (firstPlayer.Count == 0)
+      {
+        isFirstPlayerWinner = false;
+        break;
+      }
+      else if (secondPlayer.Count == 0) 
+      {
+        break;
+      }
+
+        int cardFirstPlayer = firstPlayer[0];
+        int cardSecondPlayer = secondPlayer[0];
+        
+        firstPlayer.RemoveAt(0);
+        secondPlayer.RemoveAt(0);
+        
+        if (cardFirstPlayer > cardSecondPlayer)
+        {
+          firstPlayer.Add(cardFirstPlayer);
+          firstPlayer.Add(cardSecondPlayer);
+        }
+        else if (cardSecondPlayer > cardFirstPlayer)
+        {
+          secondPlayer.Add(cardSecondPlayer);
+          secondPlayer.Add(cardFirstPlayer);
+        } 
+        else 
+        {
+          continue;
+        }
+      }
+   
+
+    if (isFirstPlayerWinner)
+    {
+      sum = firstPlayer.Sum(x => Convert.ToInt32(x));
+      Console.Write($"First player wins! Sum: {sum}");
+    } 
+    else 
+    {
+      sum = secondPlayer.Sum(x => Convert.ToInt32(x));
+      Console.Write($"Second player wins! Sum: {sum}");
+    }
+
+  }
+}

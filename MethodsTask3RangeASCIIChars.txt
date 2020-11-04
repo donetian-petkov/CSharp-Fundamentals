@@ -1,0 +1,39 @@
+using System;
+
+class MainClass {
+
+  static void RangeChars(char charOne, char charTwo)
+  {
+    int start = 0;
+    int end = 0;
+    int asciiCode1 = (int) charOne;
+    int asciiCode2 = (int) charTwo;
+
+    if (asciiCode1 > asciiCode2) 
+    {
+      start = asciiCode2;
+      end = asciiCode1;
+    } else 
+    {
+      start = asciiCode1;
+      end = asciiCode2;
+    }
+
+    for (int i = start + 1; i < end ; i++ )
+    {
+      char current = (char) i;
+      Console.Write($"{current} ");
+    }
+  }
+
+
+  public static void Main (string[] args) {
+
+    char charOne = char.Parse(Console.ReadLine());
+    char charTwo = char.Parse(Console.ReadLine());
+
+    RangeChars(charOne, charTwo);
+
+    
+  }
+}

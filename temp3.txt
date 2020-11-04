@@ -1,0 +1,19 @@
+while (people > 0)
+    {
+      if (people - capacity > 0)
+      {
+        people-=capacity;
+        trips++;
+      } 
+      else if (people - capacity < 0 && trips == 0)
+      {
+        Console.WriteLine("All the persons fit inside in the elevator.");
+        Console.WriteLine("Only one course is needed.");
+        break;
+      }
+      else if (people - capacity < 0 && trips > 0)
+      {
+        int diff = capacity - people;
+        Console.WriteLine($"")
+      }
+    }

@@ -1,0 +1,32 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+
+    double amount = double.Parse(Console.ReadLine());
+    int numberStudents = int.Parse(Console.ReadLine());
+    double priceLightsaber = double.Parse(Console.ReadLine()); 
+    double priceRobe = double.Parse(Console.ReadLine());
+    double priceBelt = double.Parse(Console.ReadLine());
+
+    int numLightsaber = Convert.ToInt32(Math.Ceiling(numberStudents + (double) (numberStudents*10)/100));
+
+    double sumLightsaber = numLightsaber*priceLightsaber; 
+
+    double sumRobe = numberStudents*priceRobe;
+
+    int freeBelts = numberStudents/6;
+
+    double sumBelt = (numberStudents - freeBelts)*priceBelt;
+
+    double sum = sumLightsaber + sumRobe + sumBelt; 
+    if (sum <= amount) 
+    {
+      Console.WriteLine($"The money is enough - it would cost {sum:f2}lv.");
+    } else 
+    {
+      Console.WriteLine($"Ivan Cho will need {sum-amount:f2}lv more.");
+    }
+    
+  }
+}

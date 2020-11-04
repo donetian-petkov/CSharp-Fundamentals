@@ -1,0 +1,24 @@
+using System;
+using System.Linq;
+
+class MainClass {
+  public static void Main (string[] args) {
+
+    string[] firstArray = Console.ReadLine().Split(" ").ToArray();
+
+    string[] secondArray = Console.ReadLine().Split(" ").ToArray();
+
+    foreach (var firstArrayElement in firstArray) 
+    {
+      foreach (var secondArrayElement in secondArray) 
+      {
+        if (firstArrayElement == secondArrayElement)
+        {
+          Console.Write(firstArrayElement + " ");
+        }
+      }
+    }
+  
+
+  }
+}

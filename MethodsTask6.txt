@@ -1,0 +1,24 @@
+using System;
+
+class MainClass {
+
+  static void FindMiddleChar(string line)
+  {
+    if (line.Length % 2 == 0){
+      Console.Write($"{line[line.Length/2-1]}{line[line.Length/2]}");
+    } 
+    else 
+    {
+      Console.WriteLine(line[line.Length/2]);
+    }
+  }
+
+  public static void Main (string[] args) {
+
+    string line = Console.ReadLine();
+
+    FindMiddleChar(line);
+
+    
+  }
+}

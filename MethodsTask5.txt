@@ -1,0 +1,23 @@
+using System;
+
+class MainClass {
+
+  static int Sum(int numberOne, int numberTwo)
+  {
+   return numberOne + numberTwo;
+  }
+
+  static void Subtract(int numberOne, int numberTwo, int numberThree) 
+  {
+    Console.WriteLine(Sum(numberOne, numberTwo)-numberThree);
+  }
+
+  public static void Main (string[] args) {
+
+    int numberOne = int.Parse(Console.ReadLine());
+    int numberTwo = int.Parse(Console.ReadLine());
+    int numberThree = int.Parse(Console.ReadLine());
+
+    Subtract(numberOne, numberTwo, numberThree);
+  }
+}

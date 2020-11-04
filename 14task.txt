@@ -1,0 +1,75 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+
+    int numberGroup = int.Parse(Console.ReadLine());
+    string typeGroup = Console.ReadLine();
+    string day = Console.ReadLine();
+    double sum = 0; 
+    double price = 0;
+
+    switch (day) 
+    {
+      case "Friday":
+      if ( typeGroup.Equals("Students") ) 
+      {
+        price = 8.45;
+      }
+      else if ( typeGroup.Equals("Business") )
+      {
+        price = 10.90;
+      }
+      else if ( typeGroup.Equals("Regular") )
+      {
+        price = 15;
+      }
+      break;
+      case "Saturday":
+      if ( typeGroup.Equals("Students") ) 
+      {
+        price = 9.80;
+      }
+      else if ( typeGroup.Equals("Business") )
+      {
+        price = 15.60;
+      }
+      else if ( typeGroup.Equals("Regular") )
+      {
+        price = 20;
+      }
+      break;
+      case "Sunday":
+      if ( typeGroup.Equals("Students") ) 
+      {
+        price = 10.46;
+      }
+      else if ( typeGroup.Equals("Business") )
+      {
+        price = 16;
+      }
+      else if ( typeGroup.Equals("Regular") )
+      {
+        price = 22.50;
+      }
+      break;
+    }
+
+    sum = price * numberGroup;
+
+    if ( typeGroup.Equals("Students") && numberGroup >= 30) 
+    {
+      sum -= sum*15/100;
+    } 
+    else if ( typeGroup.Equals("Business") && numberGroup >= 100 )
+    {
+      sum -= 10 * price;
+    }
+    else if ( typeGroup.Equals("Regular") && numberGroup >= 10 && numberGroup <= 20 )
+    {
+      sum -= sum*5/100;
+    } 
+
+    Console.WriteLine($"Total price: {sum:f2}");
+  }
+}
