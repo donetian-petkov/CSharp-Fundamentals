@@ -1,0 +1,82 @@
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+
+class MainClass
+{
+
+    public static void Main(string[] args)
+    {
+
+        List<string> friendList = Console.ReadLine().Split(", ").ToList();
+
+        List<string> blacklist = new List<string>();
+
+        List<string> lost = new List<string>();
+
+        while (true)
+        {
+            string commandInput = Console.ReadLine();
+
+            if (commandInput == "Report")
+            {
+                break;
+            }
+
+            string[] commandArray = commandInput.Split(" ");
+
+            string command = commandArray[0];
+
+            if (command == "Blacklist")
+            {
+                string name = commandArray[1];
+                if (friendList.Contains(name))
+                {
+                    int index = friendList.FindIndex(a => a.Contains(name));
+                    friendList[index] = "Blacklisted";
+                    blacklist.Add(name);
+                    Console.WriteLine($"{name} was blacklisted.");
+                }
+                else
+                {
+                    Console.WriteLine($"{name} was not found.");
+                }
+            }
+            else if (command == "Error")
+            {
+                int index = int.Parse(commandArray[1]);
+
+                if (friendList[index] != "Blacklisted" && friendList[index] != "Lost")
+                {
+                    string name = friendList[index];
+                    friendList[index] = "Lost";
+                    lost.Add(friendList[index]);
+                    Console.WriteLine($"{name} was lost due to an error.");
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            else if (command == "Change")
+            {
+                int index = int.Parse(commandArray[1]);
+                string name = commandArray[2];
+
+                if (friendList.Count - 1 >= index && index >= 0)
+                {
+                    
+                        string oldName = friendList[index];
+                        friendList[index] = name;
+                        Console.WriteLine($"{oldName} changed his username to {name}.");
+                    
+                }
+            }
+        }
+
+        Console.WriteLine($"Blacklisted names: {blacklist.Count}");
+        Console.WriteLine($"Lost names: {lost.Count}");
+        Console.WriteLine(string.Join(" ", friendList));
+    }
+}

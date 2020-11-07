@@ -1,0 +1,33 @@
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+
+class MainClass {
+
+  public static void Main (string[] args) {
+
+    float budget = float.Parse(Console.ReadLine());
+    int students = int.Parse(Console.ReadLine());
+    double flourPrice = double.Parse(Console.ReadLine());
+    double eggPrice = double.Parse(Console.ReadLine());
+    double appronPrice = double.Parse(Console.ReadLine());
+
+    int freeFlourPackages = students / 5;
+
+    int moreApprons = (int) Math.Ceiling((double) (students*20)/100);
+
+    double sum = appronPrice * (students + moreApprons) + eggPrice * 10 * students + (students - freeFlourPackages) * flourPrice;
+
+    if (budget > sum)
+    {
+      Console.WriteLine($"Items purchased for {sum:f2}$.");
+    } 
+    else if (sum > budget)
+    {
+      double difference = sum - budget;
+      Console.WriteLine($"{difference:f2}$ more needed.");
+    }
+
+  }
+}
