@@ -19,7 +19,7 @@ class MainClass {
 
     double sum = appronPrice * (students + moreApprons) + eggPrice * 10 * students + (students - freeFlourPackages) * flourPrice;
 
-    if (budget > sum)
+    if (budget >= sum)
     {
       Console.WriteLine($"Items purchased for {sum:f2}$.");
     } 
