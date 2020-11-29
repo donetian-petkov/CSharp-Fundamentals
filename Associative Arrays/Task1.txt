@@ -1,0 +1,40 @@
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+
+class MainClass
+{
+
+    public static void Main(string[] args)
+    {
+
+      char[] charInput = Console.ReadLine().ToCharArray();
+
+      var charDictionary = new Dictionary<char,int>();
+
+      for (int i = 0 ; i < charInput.Length ; i++)
+      {
+          char currentChar = charInput[i];
+
+          if (!currentChar.Equals(' '))
+          {
+          if (charDictionary.ContainsKey(currentChar))
+          {
+            charDictionary[currentChar]++;
+          }
+          else 
+          {
+            charDictionary.Add(currentChar, 1);
+          }
+          }
+       
+      }
+
+      foreach (var inputChar in charDictionary)
+      {
+        Console.WriteLine($"{inputChar.Key} -> {inputChar.Value}");
+      }
+    }
+
+}
