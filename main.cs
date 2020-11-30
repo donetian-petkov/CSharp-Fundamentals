@@ -8,100 +8,20 @@ class MainClass
 
     public static void Main(string[] args)
     {
+      Dictionary<string, string> parkingUsers = new Dictionary<string, string>();
 
-      Dictionary<string,int> legendaryItems = new Dictionary<string,int>();
-      legendaryItems.Add("shards", 0);
-      legendaryItems.Add("fragments", 0);
-      legendaryItems.Add("motes", 0);
+      int numberInputs = int.Parse.Console.ReadLine()
 
-      Dictionary<string,int> junkItems = new Dictionary<string,int>();
-
-      string winner = "";
 
       while (true)
       {
-        string[] inputString = Console.ReadLine().Split(' ').ToArray();
-
-        int quantity = 0;
-        bool haveWinner = false;
-
-        for (int i = 0 ; i < inputString.Length ; i++ )
-        {
-          string input = inputString[i].ToLower();
-          if (i % 2 == 0)
-          {
-            quantity = int.Parse(input);
-            continue;
-          }
-          else 
-          {
-            if (legendaryItems.ContainsKey(input))
-            {
-              legendaryItems[input] += quantity;
-              if (legendaryItems[input] >= 250)
-              {
-                haveWinner = true;
-              }
-            }
-            else
-            {
-              if (junkItems.ContainsKey(input))
-            {
-              junkItems[input] += quantity;
-            }
-            else 
-            {
-              junkItems.Add(input,quantity);
-            }
-            }
-          }
-
-        if (haveWinner)
-        {
-          legendaryItems[input] = legendaryItems[input] - 250;
-          switch (input)
-            {
-          case "shards":
-          winner = "Shadowmourne";
-          break;
-          case "fragments":
-          winner = "Valanyr";
-          break;
-          case "motes":
-          winner = "Dragonwrath";
-          break;
-            }
-          break;
-        } 
-      }
-          if (haveWinner)
-          {
-            break;
-          }
-        
       }
 
-      Console.WriteLine($"{winner} obtained!");
-
-      Dictionary<string, int> filteredItems = legendaryItems
-                                             .OrderByDescending(v => v.Value)
-                                             .ThenBy(k => k.Key)
-                                             .ToDictionary(a => a.Key , a => a.Value);
-
-      Dictionary<string, int> filteredJunk = junkItems.OrderBy(x=>x.Key).ToDictionary(a => a.Key , a => a.Value);
-
-      foreach (var item in filteredItems)
+      foreach (var item in productList)
       {
-        Console.WriteLine($"{item.Key}: {item.Value}");
+        double totalPrice = item.Value[0] * item.Value[1];
+        Console.WriteLine($"{item.Key}: {totalPrice:f2}");
       }
-
-      foreach (var item in filteredJunk)
-      {
-        Console.WriteLine($"{item.Key}: {item.Value}");
-      }
-      
-
-      
     
     }
 }

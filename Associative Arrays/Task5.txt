@@ -1,0 +1,63 @@
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+
+class MainClass
+{
+
+    public static void Main(string[] args)
+    {
+        Dictionary<string, string> parkingUsers = new Dictionary<string, string>();
+
+        int numberInputs = int.Parse(Console.ReadLine());
+
+
+      while (numberInputs > 0)
+        {
+            numberInputs--;
+
+            string[] parkingInput = Console.ReadLine().Split();
+
+            string command = parkingInput[0];
+            string user = parkingInput[1];
+
+
+            if (command.Equals("register"))
+            {
+                string plateNumber = parkingInput[2];
+
+                if (!parkingUsers.ContainsKey(user))
+                {
+                    parkingUsers.Add(user, plateNumber);
+                    Console.WriteLine($"{user} registered {plateNumber} successfully");
+                }
+                else
+                {
+                    Console.WriteLine($"ERROR: already registered with plate number {plateNumber}");
+                    continue;
+                }
+            }
+            else if (command.Equals("unregister"))
+            {
+                if (!parkingUsers.ContainsKey(user))
+                {
+                    Console.WriteLine($"ERROR: user {user} not found");
+                    continue;
+                }
+                else
+                {
+                    parkingUsers.Remove(user);
+                    Console.WriteLine($"{user} unregistered successfully");
+                }
+            }
+
+        }
+
+        foreach (var item in parkingUsers)
+        {
+            Console.WriteLine($"{item.Key} => {item.Value}");
+        }
+
+    }
+}
