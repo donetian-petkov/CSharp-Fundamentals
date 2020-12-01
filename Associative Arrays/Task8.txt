@@ -15,9 +15,8 @@ class MainClass
         {
             string[] inputCourse = Console.ReadLine().Split(" -> ");
 
-            string command = inputCourse[0].ToLower();
-            
-            if (command.Equals("end"))
+
+            if (inputCourse[0].ToLower().Equals("end"))
             {
                 break;
             }
@@ -35,24 +34,24 @@ class MainClass
             {
                 if (companies[company].Contains(employeeID))
                 {
-                  break;
+                    continue;
                 }
                 else
                 {
-                companies[company].Add(employeeID);
+                    companies[company].Add(employeeID);
                 }
             }
         }
 
-      foreach (var kvp in companies.OrderBy(v => v.Value))
-      {
-        Console.WriteLine($"{kvp.Key}");
-
-        foreach (var id in companies[kvp.Key])
+        foreach (var kvp in companies.OrderBy(v => v.Key))
         {
-          Console.WriteLine($"-- {id}");
+            Console.WriteLine($"{kvp.Key}");
+
+            foreach (var id in companies[kvp.Key])
+            {
+                Console.WriteLine($"-- {id}");
+            }
         }
-      }
 
     }
 }
