@@ -1,0 +1,25 @@
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+
+class MainClass
+{
+
+    public static void Main(string[] args)
+    {
+      string originalText = Console.ReadLine();
+
+      StringBuilder encryptText = new StringBuilder();
+
+      for (int i = 0; i < originalText.Length ; i++)
+      {
+        int tempChar = originalText[i] + 3;
+        encryptText.Append(Convert.ToChar(tempChar));
+      }
+
+      Console.WriteLine(encryptText.ToString());
+
+    }
+
+}
