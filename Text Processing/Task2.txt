@@ -1,0 +1,45 @@
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+
+class MainClass
+{
+
+    public static void Main(string[] args)
+    {
+
+     string[] input = Console.ReadLine().Split(" ");
+     Console.WriteLine(CalculateCharCode(input));
+       
+    }
+
+    public static int CalculateCharCode(string[] input)
+    {
+      string longestString = input[0];
+      string shortestString = input[1];
+      int sum = 0;
+
+      if (input[1].Length > input[0].Length)
+      {
+        longestString = input[1]; 
+        shortestString = input[0];
+      }
+      
+
+      for (int i = 0 ; i < longestString.Length ; i++)
+      {
+        if (i >= shortestString.Length)
+        {
+           sum += longestString[i];
+        }
+        else 
+        {
+          sum += shortestString[i]*longestString[i];
+        }
+      }
+
+      return sum;
+    }
+
+}
