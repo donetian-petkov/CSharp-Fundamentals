@@ -1,0 +1,38 @@
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+
+class MainClass
+{
+
+    public static void Main(string[] args)
+    {
+      
+      StringBuilder sb = new StringBuilder();
+      
+      string sequence = Console.ReadLine();
+      
+      char previousChar = '\0';
+
+
+
+      foreach (var ch in sequence )
+      {
+        if (ch.Equals(previousChar))
+        {
+          continue;
+        }
+        else
+        {
+          sb.Append(ch.ToString());
+        }
+        previousChar = ch;
+      }
+
+      Console.WriteLine(sb.ToString());
+
+
+    }
+
+}
