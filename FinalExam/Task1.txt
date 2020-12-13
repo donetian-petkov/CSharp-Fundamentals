@@ -1,0 +1,89 @@
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+public class Task1
+{
+    public static void Main()
+    {
+        string textString = Console.ReadLine();
+
+        string[] input = Console.ReadLine().Split(" ").ToArray();
+
+        while (input[0] != "Done")
+        {
+          string command = input[0];
+
+          StringBuilder sb = new StringBuilder();
+
+          if (command.Equals("Change"))
+          {
+            char originalChar = char.Parse(input[1]);
+            char replacementChar = char.Parse(input[2]);
+            
+            for (int i = 0 ; i < textString.Length; i++)
+            {
+              if (textString[i].Equals(originalChar))
+              {
+                sb.Append(replacementChar);
+              }
+              else 
+              {
+                sb.Append(textString[i]);
+              }
+            }
+            textString = sb.ToString();
+            Console.WriteLine(textString);  
+          }
+          else if (command.Equals("Includes"))
+          {
+            string testString = input[1];
+
+            if (textString.Contains(testString))
+            {
+              Console.WriteLine("True");
+            } 
+            else
+            {
+              Console.WriteLine("False");
+            }
+          }
+          else if (command.Equals("End"))
+          {
+            string testString = input[1];
+            string lastString = textString.Substring(textString.Length - testString.Length);
+
+            if (testString.Equals(lastString))
+            {
+              Console.WriteLine("True");
+            }
+            else
+            {
+              Console.WriteLine("False");
+            }
+          }
+          else if (command.Equals("Uppercase"))
+          {
+            textString = textString.ToUpper();
+            Console.WriteLine(textString);
+          }
+          else if (command.Equals("FindIndex"))
+          {
+            char testChar = char.Parse(input[1]);
+
+            Console.WriteLine(textString.IndexOf(testChar));
+          }
+          else if (command.Equals("Cut"))
+          {
+            int startIndex = int.Parse(input[1]);
+            int cutLength = int.Parse(input[2]);
+            textString = textString.Substring(startIndex, cutLength);
+            Console.WriteLine(textString);
+          }
+
+           input = Console.ReadLine().Split(" ").ToArray();
+        } 
+    }
+}
