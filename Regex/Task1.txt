@@ -2,14 +2,13 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 using System.Text.RegularExpressions;
 
-public class Main
+public class Task1
 {
     public static void Main()
     {
-        string pattern = @">>([A-z]+)<<(\d+\.?\d*)!(\d+)";
+        string pattern = @">>([A-Za-z]+)<<(\d+\.?\d+)!(\d+)";
         
         Regex ourRegex = new Regex(pattern);
 
